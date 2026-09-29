@@ -17,19 +17,91 @@
 <p class="sources">Sources: <a href="https://developers.openai.com/api/docs/pricing">OpenAI API pricing</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic API pricing</a>. The refresh checker preserves the last known-good dashboard if either source’s structure changes.</p>
 </main>
 <!-- PRICING_DATA_START
-{"updated":"2026-09-29","models":[
-{"provider":"OpenAI","name":"GPT-6 Astra","input":10,"output":50,"fit":"Highest-stakes reasoning and difficult, long-horizon work."},
-{"provider":"OpenAI","name":"GPT-6 Sol","input":2,"output":10,"fit":"Default choice for serious coding, analysis, and agent work."},
-{"provider":"OpenAI","name":"GPT-6 Luna","input":0.1,"output":0.5,"fit":"High-volume drafting, classification, extraction, and simple automation."},
-{"provider":"OpenAI","name":"GPT-5.6 Sol","input":4,"output":20,"fit":"Previous-generation flagship; use mainly for compatibility or comparison."},
-{"provider":"OpenAI","name":"GPT-5.6 Terra","input":2,"output":12,"fit":"Previous-generation balanced model; GPT-6 Sol is usually the better default."},
-{"provider":"OpenAI","name":"GPT-5.6 Luna","input":0.2,"output":1.2,"fit":"Previous-generation economy model; prefer GPT-6 Luna when it meets the task."},
-{"provider":"OpenAI","name":"GPT-5.5","input":5,"output":30,"fit":"Keep for reproducing older results or behavior."},
-{"provider":"Anthropic","name":"Claude Fable 5.1","input":10,"output":50,"fit":"Demanding reasoning and long-horizon agentic work."},
-{"provider":"Anthropic","name":"Claude Opus 5.5","input":4,"output":20,"fit":"Long-running agentic coding and knowledge work.","batch":"Batch: $2 / $10"},
-{"provider":"Anthropic","name":"Claude Sonnet 5.5","input":2,"output":10,"fit":"Strong speed/intelligence balance; start here for most work.","batch":"Batch: $1 / $5"},
-{"provider":"Anthropic","name":"Claude Haiku 4.5","input":1,"output":5,"fit":"Fast, lower-cost work that does not need a frontier model.","batch":"Batch: $0.50 / $2.50"}
-]}
+{
+  "updated": "2026-09-29",
+  "models": [
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra",
+      "input": 10,
+      "output": 50,
+      "fit": "Highest-stakes reasoning and difficult, long-horizon work."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol",
+      "input": 2,
+      "output": 10,
+      "fit": "Default choice for serious coding, analysis, and agent work."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna",
+      "input": 0.1,
+      "output": 0.5,
+      "fit": "High-volume drafting, classification, extraction, and simple automation."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Sol",
+      "input": 4,
+      "output": 20,
+      "fit": "Previous-generation flagship; use mainly for compatibility or comparison."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra",
+      "input": 2,
+      "output": 12,
+      "fit": "Previous-generation balanced model; GPT-6 Sol is usually the better default."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna",
+      "input": 0.2,
+      "output": 1.2,
+      "fit": "Previous-generation economy model; prefer GPT-6 Luna when it meets the task."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.5",
+      "input": 5,
+      "output": 30,
+      "fit": "Keep for reproducing older results or behavior."
+    },
+    {
+      "provider": "Anthropic",
+      "name": "Claude Fable 5.1",
+      "input": 10,
+      "output": 50,
+      "fit": "Demanding reasoning and long-horizon agentic work."
+    },
+    {
+      "provider": "Anthropic",
+      "name": "Claude Opus 5.5",
+      "input": 4,
+      "output": 20,
+      "fit": "Long-running agentic coding and knowledge work.",
+      "batch": "Batch: $2 / $10"
+    },
+    {
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5.5",
+      "input": 2,
+      "output": 10,
+      "fit": "Strong speed/intelligence balance; start here for most work.",
+      "batch": "Batch: $1 / $5"
+    },
+    {
+      "provider": "Anthropic",
+      "name": "Claude Haiku 4.5",
+      "input": 1,
+      "output": 5,
+      "fit": "Fast, lower-cost work that does not need a frontier model.",
+      "batch": "Batch: $0.50 / $2.50"
+    }
+  ]
+}
 PRICING_DATA_END -->
 <script>
 const raw=document.documentElement.innerHTML.match(/PRICING_DATA_START\s*([\s\S]*?)\s*PRICING_DATA_END/)[1];const data=JSON.parse(raw);const money=n=>'$'+(n<1?n.toFixed(n<.01?3:2):n.toFixed(2).replace(/\.00$/,''));
