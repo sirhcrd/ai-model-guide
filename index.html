@@ -9,11 +9,12 @@
 <h1>Model decision guide</h1><p class="sub">API price comparison, refreshed from official provider pages. <span id="updated"></span></p>
 <div class="notice"><strong>Use this correctly:</strong> these are pay-as-you-go API prices per million tokens, not a per-token bill for your Codex or Claude subscription. A listed API model may also be unavailable in your particular app/account.</div>
 <section class="calc" style="margin-top:0"><h2>Quick pick: OpenAI or Claude</h2><p class="note">Equivalent recommendations for the two subscriptions you use. The public API figures help compare relative cost; your subscription allowance is metered separately.</p><div class="cards" style="margin-top:14px">
-  <section class="card openai"><div class="head"><h2>OpenAI · Codex</h2><p>My picks from your available model menu</p></div>
-    <div class="model"><div class="row"><span class="name">GPT-6 Sol · Medium</span><span class="price">everyday · $2 / $10</span></div><div class="fit">Best overall value. Use for homelab changes with a clear goal, everyday coding, research you will act on, and multi-step workflows needing judgment.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-6 Luna · Low/Medium</span><span class="price">background · $0.10 / $0.50</span></div><div class="fit">Scheduled research, source collection, log triage, inventory, extraction, drafting, and other bounded repeatable work. Give it a stop condition.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-6 Astra · Medium/High</span><span class="price">hard/risky · $10 / $50</span></div><div class="fit">Ambiguous root causes, complex migrations, security review, broad synthesis, or changes where a wrong answer creates expensive rework.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-5.6 family / GPT-5.5</span><span class="price">compatibility</span></div><div class="fit">Use mainly to reproduce older behavior or compare results. The GPT-6 family is normally the stronger value ladder.</div></div>
+  <section class="card openai"><div class="head"><h2>OpenAI · Codex</h2><p>Current picks from the available model menu</p></div>
+    <div class="model"><div class="row"><span class="name">GPT-6.1 Sol · Medium</span><span class="price">everyday · $1 / $5</span></div><div class="fit">Best overall value. Use for homelab changes with a clear goal, everyday coding, research you will act on, and multi-step workflows needing judgment.</div></div>
+    <div class="model"><div class="row"><span class="name">GPT-6 Luna · Low/Medium</span><span class="price">background · $0.05 / $0.25</span></div><div class="fit">Scheduled research, source collection, log triage, inventory, extraction, drafting, and other bounded repeatable work. Give it a stop condition.</div></div>
+    <div class="model"><div class="row"><span class="name">GPT-6 Astra · Medium/High</span><span class="price">hard/risky · $5 / $25</span></div><div class="fit">Ambiguous root causes, complex migrations, security review, broad synthesis, or changes where a wrong answer creates expensive rework.</div></div>
+    <div class="model"><div class="row"><span class="name">GPT-6 Sol · Medium</span><span class="price">previous generation</span></div><div class="fit">Keep for compatibility checks or comparing behavior. Use GPT-6.1 Sol for new everyday work.</div></div>
+    <div class="model"><div class="row"><span class="name">GPT-5.6 family / GPT-5.5</span><span class="price">legacy comparison</span></div><div class="fit">Use when reproducing older results or behavior; otherwise start with the current GPT-6 choices above.</div></div>
   </section>
   <section class="card anthropic"><div class="head"><h2>Anthropic · Claude</h2><p>The matching Claude decision ladder</p></div>
     <div class="model"><div class="row"><span class="name">Claude Sonnet 5.5</span><span class="price">everyday · $2 / $10</span></div><div class="fit">Best routine balance for coding, data analysis, content creation, visual work, and agentic tool use when you care about speed and cost.</div></div>
@@ -21,9 +22,9 @@
     <div class="model"><div class="row"><span class="name">Claude Opus 5.5 · Medium</span><span class="price">hard/agentic · $4 / $20</span></div><div class="fit">Long-running coding agents, large refactors, complex systems engineering, computer use, and knowledge work that must remain coherent for hours.</div></div>
     <div class="model"><div class="row"><span class="name">Claude Fable 5.1 · High</span><span class="price">maximum · $10 / $50</span></div><div class="fit">Use when Opus at high effort still falls short: multistep deep research, demanding reasoning, and long-horizon work carried through to a finished deliverable.</div></div>
   </section>
-</div><p class="note" style="margin:14px 0 0"><strong>Safe homelab rule for either provider:</strong> Luna or Haiku may inspect, summarize, and propose. Sol or Sonnet may implement reversible, reviewed changes. Astra, Opus, or Fable should plan and verify changes touching networking, storage, credentials, backups, public exposure, or several dependent services. Keep a human approval step for destructive or externally visible actions.</p></section>
+</div><p class="note" style="margin:14px 0 0"><strong>Safe homelab rule for either provider:</strong> Luna or Haiku may inspect, summarize, and propose. GPT-6.1 Sol or Sonnet may implement reversible, reviewed changes. Astra, Opus, or Fable should plan and verify changes touching networking, storage, credentials, backups, public exposure, or several dependent services. Keep a human approval step for destructive or externally visible actions.</p></section>
 <section class="cards" id="cards"></section>
-<section class="calc"><h2>Quick cost estimate</h2><p class="note">For a typical task, enter expected input and output tokens. This excludes tool calls, images, data-residency premiums, and caching.</p><div class="calc-grid"><label>Model<select id="pick"></select></label><label>Input tokens<input id="input" type="number" min="0" value="10000"></label><label>Output tokens<input id="output" type="number" min="0" value="3000"></label></div><div class="result" id="result"></div></section>
+<section class="calc"><h2>Quick cost estimate</h2><p class="note">Uses standard short-context API rates per million tokens. Actual subscription usage is separate; this excludes tool calls, images, data-residency premiums, and caching.</p><div class="calc-grid"><label>Model<select id="pick"></select></label><label>Input tokens<input id="input" type="number" min="0" value="10000"></label><label>Output tokens<input id="output" type="number" min="0" value="3000"></label></div><div class="result" id="result"></div></section>
 <p class="sources">Sources: <a href="https://developers.openai.com/api/docs/pricing">OpenAI API pricing</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic API pricing</a>. The refresh checker preserves the last known-good dashboard if either source’s structure changes.</p>
 </main>
 <!-- PRICING_DATA_START
@@ -33,22 +34,22 @@
     {
       "provider": "OpenAI",
       "name": "GPT-6 Astra",
-      "input": 10,
-      "output": 50,
+      "input": 5,
+      "output": 25,
       "fit": "Highest-stakes reasoning and difficult, long-horizon work."
     },
     {
       "provider": "OpenAI",
-      "name": "GPT-6 Sol",
-      "input": 2,
-      "output": 10,
+      "name": "GPT-6.1 Sol",
+      "input": 1,
+      "output": 5,
       "fit": "Default choice for serious coding, analysis, and agent work."
     },
     {
       "provider": "OpenAI",
       "name": "GPT-6 Luna",
-      "input": 0.1,
-      "output": 0.5,
+      "input": 0.05,
+      "output": 0.25,
       "fit": "High-volume drafting, classification, extraction, and simple automation."
     },
     {
