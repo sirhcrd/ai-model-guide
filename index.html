@@ -3,28 +3,14 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Model decision guide</title>
 <style>
- :root{--ink:#172033;--muted:#60708a;--line:#dce3ee;--paper:#fff;--bg:#f4f7fb;--o:#087ea4;--a:#a64b20;--good:#067647;--warn:#a15c00}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:auto;padding:32px 20px 48px}h1{margin:0;font-size:30px;letter-spacing:-.035em}.sub,.note{color:var(--muted)}.sub{margin:7px 0 24px}.notice{background:#fff8e8;border:1px solid #f4d497;border-radius:10px;padding:12px 14px;margin:0 0 20px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card,.calc{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}.head{padding:16px 18px 12px;border-bottom:3px solid}.openai .head{border-color:var(--o)}.anthropic .head{border-color:var(--a)}h2{font-size:18px;margin:0}.head p{color:var(--muted);margin:3px 0 0;font-size:13px}.model{padding:14px 18px;border-bottom:1px solid var(--line)}.model:last-child{border:0}.row{display:flex;gap:8px;justify-content:space-between;align-items:baseline}.name{font-weight:700}.fit{font-size:13px;color:var(--muted);margin-top:3px}.price{font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}.tag{font-size:11px;font-weight:700;color:var(--good);margin-top:5px}.calc{margin-top:18px;padding:18px}.calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.calc label{display:block;font-size:12px;font-weight:700;color:var(--muted)}input,select{width:100%;margin-top:5px;padding:8px;border:1px solid #b9c6d8;border-radius:7px;background:white;font:14px inherit}.result{margin-top:14px;font-size:17px;font-weight:700}.sources{margin-top:22px;font-size:13px;color:var(--muted)}a{color:#075cbb}@media(max-width:700px){.cards{grid-template-columns:1fr}.calc-grid{grid-template-columns:1fr}h1{font-size:25px}}
+ :root{--ink:#172033;--muted:#60708a;--line:#dce3ee;--paper:#fff;--bg:#f4f7fb;--o:#087ea4;--a:#a64b20;--good:#067647;--warn:#a15c00}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:auto;padding:32px 20px 48px}h1{margin:0;font-size:30px;letter-spacing:-.035em}.sub,.note{color:var(--muted)}.sub{margin:7px 0 24px}.notice{background:#fff8e8;border:1px solid #f4d497;border-radius:10px;padding:12px 14px;margin:0 0 20px}.comparison,.calc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}.comparison h2,.calc h2{font-size:18px;margin:0}.provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:14px 0}.provider-panel{border:1px solid var(--line);border-radius:12px;overflow:hidden}.provider-panel h3{margin:0;padding:12px 14px;background:#f8fafc;font-size:16px}.provider-panel.openai h3{border-top:3px solid var(--o)}.provider-panel.anthropic h3{border-top:3px solid var(--a)}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:#f8fafc}td{font-size:13px}.provider-panel tbody tr:last-child td{border-bottom:0}.model-name{font-weight:700}.rate{font:600 12px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}.rate-note{display:block;font:10px/1.35 system-ui,sans-serif;color:var(--muted);margin-top:3px}.provider-panel th:last-child,.provider-panel td:last-child{width:88px}.calc{margin-top:18px;padding:18px}.calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.calc label{display:block;font-size:12px;font-weight:700;color:var(--muted)}input,select{width:100%;margin-top:5px;padding:8px;border:1px solid #b9c6d8;border-radius:7px;background:white;font:14px inherit}.result{margin-top:14px;font-size:17px;font-weight:700}.sources{margin-top:22px;font-size:13px;color:var(--muted)}a{color:#075cbb}@media(max-width:800px){.provider-grid{grid-template-columns:1fr}}@media(max-width:700px){.calc-grid{grid-template-columns:1fr}h1{font-size:25px}}
 </style>
 <body><main class="wrap">
 <h1>Model decision guide</h1><p class="sub">API price comparison, refreshed from official provider pages. <span id="updated"></span></p>
-<div class="notice"><strong>Use this correctly:</strong> these are pay-as-you-go API prices per million tokens, not a per-token bill for your Codex or Claude subscription. A listed API model may also be unavailable in your particular app/account.</div>
-<section class="calc" style="margin-top:0"><h2>Quick pick: OpenAI or Claude</h2><p class="note">Equivalent recommendations for the two subscriptions you use. The public API figures help compare relative cost; your subscription allowance is metered separately.</p><div class="cards" style="margin-top:14px">
-  <section class="card openai"><div class="head"><h2>OpenAI · Codex</h2><p>Current picks from the available model menu</p></div>
-    <div class="model"><div class="row"><span class="name">GPT-6.1 Sol · Medium</span><span class="price">everyday · $1 / $5</span></div><div class="fit">Best overall value. Use for homelab changes with a clear goal, everyday coding, research you will act on, and multi-step workflows needing judgment.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-6 Luna · Low/Medium</span><span class="price">background · $0.05 / $0.25</span></div><div class="fit">Scheduled research, source collection, log triage, inventory, extraction, drafting, and other bounded repeatable work. Give it a stop condition.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-6 Astra · Medium/High</span><span class="price">hard/risky · $5 / $25</span></div><div class="fit">Ambiguous root causes, complex migrations, security review, broad synthesis, or changes where a wrong answer creates expensive rework.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-6 Sol · Medium</span><span class="price">previous generation</span></div><div class="fit">Keep for compatibility checks or comparing behavior. Use GPT-6.1 Sol for new everyday work.</div></div>
-    <div class="model"><div class="row"><span class="name">GPT-5.6 family / GPT-5.5</span><span class="price">legacy comparison</span></div><div class="fit">Use when reproducing older results or behavior; otherwise start with the current GPT-6 choices above.</div></div>
-  </section>
-  <section class="card anthropic"><div class="head"><h2>Anthropic · Claude</h2><p>The matching Claude decision ladder</p></div>
-    <div class="model"><div class="row"><span class="name">Claude Sonnet 5.5</span><span class="price">everyday · $2 / $10</span></div><div class="fit">Best routine balance for coding, data analysis, content creation, visual work, and agentic tool use when you care about speed and cost.</div></div>
-    <div class="model"><div class="row"><span class="name">Claude Haiku 4.5</span><span class="price">background · $1 / $5</span></div><div class="fit">High-volume research workers, classification, summarization, subagents, prototypes, and straightforward tasks with tight cost or latency limits.</div></div>
-    <div class="model"><div class="row"><span class="name">Claude Opus 5.5 · Medium</span><span class="price">hard/agentic · $4 / $20</span></div><div class="fit">Long-running coding agents, large refactors, complex systems engineering, computer use, and knowledge work that must remain coherent for hours.</div></div>
-    <div class="model"><div class="row"><span class="name">Claude Fable 5.1 · High</span><span class="price">maximum · $10 / $50</span></div><div class="fit">Use when Opus at high effort still falls short: multistep deep research, demanding reasoning, and long-horizon work carried through to a finished deliverable.</div></div>
-  </section>
-</div><p class="note" style="margin:14px 0 0"><strong>Safe homelab rule for either provider:</strong> Luna or Haiku may inspect, summarize, and propose. GPT-6.1 Sol or Sonnet may implement reversible, reviewed changes. Astra, Opus, or Fable should plan and verify changes touching networking, storage, credentials, backups, public exposure, or several dependent services. Keep a human approval step for destructive or externally visible actions.</p></section>
-<section class="cards" id="cards"></section>
-<section class="calc"><h2>Quick cost estimate</h2><p class="note">Uses standard short-context API rates per million tokens. Actual subscription usage is separate; this excludes tool calls, images, data-residency premiums, and caching.</p><div class="calc-grid"><label>Model<select id="pick"></select></label><label>Input tokens<input id="input" type="number" min="0" value="10000"></label><label>Output tokens<input id="output" type="number" min="0" value="3000"></label></div><div class="result" id="result"></div></section>
+<div class="notice"><strong>API prices only</strong> (not your subscription charge). Cost estimates use the same example for every model: 10,000 prompt/context tokens plus 3,000 reply tokens, shown per 1,000 total tokens.</div>
+<section class="comparison"><h2>Model comparison</h2><div class="provider-grid" id="provider-tables"></div><p class="note"><strong>Safe homelab rule:</strong> Luna or Haiku may inspect and propose; Sol or Sonnet may implement reviewed, reversible changes; Astra, Opus, or Fable should plan and verify higher-risk changes. Keep human approval for destructive or externally visible actions.</p></section>
+<section class="calc"><h2>Quick cost estimate</h2><p class="note">Enter the rough total tokens for a task. The estimate uses the same representative mix for every model (10,000 prompt/context tokens and 3,000 reply tokens per 13,000 total). Tool calls, images, data-residency premiums, caching, and a different task mix can change actual cost.</p><div class="calc-grid" style="grid-template-columns:1fr 1fr"><label>Model<select id="pick"></select></label><label>Total tokens in this task<input id="tokens" type="number" min="0" value="13000"></label></div><div class="result" id="result"></div></section>
+<section class="calc"><h2>Batch vs. normal API calls</h2><p class="note"><strong>Normal:</strong> send a request and wait for the answer now. <strong>Batch:</strong> queue many separate requests and collect their answers later. Batch API processing costs 50% less at both providers, but is asynchronous: OpenAI sets a 24-hour completion window; Anthropic says most batches finish within an hour, with a 24-hour limit. Use it for overnight summaries, bulk classification, or model evaluations—not live chat or work that needs an immediate answer. You submit it through an API script or app; it does not discount Codex or Claude subscription usage.</p><p class="note"><a href="https://developers.openai.com/api/docs/guides/batch">OpenAI Batch API guide</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/batch-processing">Anthropic Batch API guide</a></p></section>
 <p class="sources">Sources: <a href="https://developers.openai.com/api/docs/pricing">OpenAI API pricing</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic API pricing</a>. The refresh checker preserves the last known-good dashboard if either source’s structure changes.</p>
 </main>
 <!-- PRICING_DATA_START
@@ -36,63 +22,74 @@
       "name": "GPT-6 Astra",
       "input": 5,
       "output": 25,
-      "fit": "Highest-stakes reasoning and difficult, long-horizon work."
+      "fit": "Complex reasoning, high-risk changes, security reviews, and difficult root causes."
     },
     {
       "provider": "OpenAI",
       "name": "GPT-6.1 Sol",
       "input": 1,
       "output": 5,
-      "fit": "Default choice for serious coding, analysis, and agent work."
+      "fit": "Everyday coding, research, and multi-step work."
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol",
+      "input": 2,
+      "output": 10,
+      "fit": "Previous-generation Sol kept for comparison with the model shown in your menu.",
+      "rateNote": "Last-known API rate"
     },
     {
       "provider": "OpenAI",
       "name": "GPT-6 Luna",
       "input": 0.05,
       "output": 0.25,
-      "fit": "High-volume drafting, classification, extraction, and simple automation."
+      "fit": "Scheduled research, triage, extraction, and other bounded high-volume work."
     },
     {
       "provider": "OpenAI",
       "name": "GPT-5.6 Sol",
       "input": 4,
       "output": 20,
-      "fit": "Previous-generation flagship; use mainly for compatibility or comparison."
+      "fit": "Previous-generation flagship for legacy comparisons.",
+      "rateNote": "Promo price through Nov 21, 2026"
     },
     {
       "provider": "OpenAI",
       "name": "GPT-5.6 Terra",
       "input": 2,
       "output": 12,
-      "fit": "Previous-generation balanced model; GPT-6 Sol is usually the better default."
+      "fit": "Previous-generation balanced model.",
+      "rateNote": "Rate from OpenAI Jul 30 announcement"
     },
     {
       "provider": "OpenAI",
       "name": "GPT-5.6 Luna",
       "input": 0.2,
       "output": 1.2,
-      "fit": "Previous-generation economy model; prefer GPT-6 Luna when it meets the task."
+      "fit": "Previous-generation economy model.",
+      "rateNote": "Rate from OpenAI Jul 30 announcement"
     },
     {
       "provider": "OpenAI",
       "name": "GPT-5.5",
       "input": 5,
       "output": 30,
-      "fit": "Keep for reproducing older results or behavior."
+      "fit": "Reproducing older behavior or comparing results."
     },
     {
       "provider": "Anthropic",
       "name": "Claude Fable 5.1",
       "input": 10,
       "output": 50,
-      "fit": "Demanding reasoning and long-horizon agentic work."
+      "fit": "Demanding reasoning, deep research, and long-horizon work."
     },
     {
       "provider": "Anthropic",
       "name": "Claude Opus 5.5",
       "input": 4,
       "output": 20,
-      "fit": "Long-running agentic coding and knowledge work.",
+      "fit": "Long-running coding agents, large refactors, and complex systems work.",
       "batch": "Batch: $2 / $10"
     },
     {
@@ -100,7 +97,7 @@
       "name": "Claude Sonnet 5.5",
       "input": 2,
       "output": 10,
-      "fit": "Strong speed/intelligence balance; start here for most work.",
+      "fit": "Everyday coding, analysis, content creation, and agentic tool use.",
       "batch": "Batch: $1 / $5"
     },
     {
@@ -108,7 +105,7 @@
       "name": "Claude Haiku 4.5",
       "input": 1,
       "output": 5,
-      "fit": "Fast, lower-cost work that does not need a frontier model.",
+      "fit": "High-volume summaries, classification, prototypes, and simple tasks.",
       "batch": "Batch: $0.50 / $2.50"
     }
   ]
@@ -117,7 +114,7 @@ PRICING_DATA_END -->
 <script>
 const raw=document.documentElement.innerHTML.match(/PRICING_DATA_START\s*([\s\S]*?)\s*PRICING_DATA_END/)[1];const data=JSON.parse(raw);const money=n=>'$'+(n<1?n.toFixed(n<.01?3:2):n.toFixed(2).replace(/\.00$/,''));
 document.querySelector('#updated').textContent='Last verified '+data.updated+'.';
-const cards=document.querySelector('#cards');for(const provider of ['OpenAI','Anthropic']){let c=document.createElement('section');c.className='card '+(provider==='OpenAI'?'openai':'anthropic');c.innerHTML=`<div class="head"><h2>${provider}</h2><p>Standard API processing · $ / 1M input / output tokens</p></div>`;data.models.filter(x=>x.provider===provider).forEach(x=>{let e=document.createElement('div');e.className='model';e.innerHTML=`<div class="row"><span class="name">${x.name}</span><span class="price">${money(x.input)} / ${money(x.output)}</span></div><div class="fit">${x.fit}</div>${x.batch?`<div class="tag">${x.batch} / 1M tokens</div>`:''}`;c.append(e)});cards.append(c)}
-const pick=document.querySelector('#pick'),i=document.querySelector('#input'),o=document.querySelector('#output'),r=document.querySelector('#result');data.models.forEach((x,n)=>pick.add(new Option(`${x.provider} — ${x.name}`,n)));function calc(){const x=data.models[pick.value],total=(+i.value||0)/1e6*x.input+(+o.value||0)/1e6*x.output;r.textContent=`Estimated API cost: ${money(total)} (${x.name})`} [pick,i,o].forEach(e=>e.addEventListener('input',calc));calc();
+const providerTables=document.querySelector('#provider-tables');for(const provider of ['OpenAI','Anthropic']){const panel=document.createElement('section');panel.className='provider-panel '+(provider==='OpenAI'?'openai':'anthropic');const title=document.createElement('h3');title.textContent=provider;const wrap=document.createElement('div');wrap.className='table-wrap';const table=document.createElement('table');table.innerHTML='<thead><tr><th>Model</th><th>Best for</th><th>Cost (¢ / 1K)</th></tr></thead><tbody></tbody>';panel.append(title,wrap);wrap.append(table);const body=table.querySelector('tbody');for(const x of data.models.filter(m=>m.provider===provider)){const rate=(x.input+0.3*x.output)/13;const tr=document.createElement('tr');const modelCell=document.createElement('td');const modelName=document.createElement('span');modelName.className='model-name';modelName.textContent=x.name;modelCell.append(modelName);const fitCell=document.createElement('td');fitCell.textContent=x.fit;const costCell=document.createElement('td');const rateEl=document.createElement('span');rateEl.className='rate';rateEl.textContent=rate.toFixed(3)+'¢';costCell.append(rateEl);if(x.rateNote){const note=document.createElement('span');note.className='rate-note';note.textContent=x.rateNote;costCell.append(note)}tr.append(modelCell,fitCell,costCell);body.append(tr)}providerTables.append(panel)}
+const pick=document.querySelector('#pick'),tokens=document.querySelector('#tokens'),r=document.querySelector('#result');data.models.forEach((x,n)=>pick.add(new Option(x.provider+' — '+x.name,n)));function calc(){const x=data.models[pick.value],rate=(x.input+0.3*x.output)/13,totalCents=(+tokens.value||0)/1000*rate;r.textContent='Estimated API cost: about '+totalCents.toFixed(2)+'¢ ($'+(totalCents/100).toFixed(4)+') for '+(+tokens.value||0).toLocaleString()+' tokens · '+x.name} [pick,tokens].forEach(e=>e.addEventListener('input',calc));calc();
 </script>
 </body></html>
