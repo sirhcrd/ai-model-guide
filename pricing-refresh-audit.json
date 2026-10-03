@@ -1,43 +1,9 @@
 {
-  "checked_at": "2026-10-02T18:11:20.097860+00:00",
+  "checked_at": "2026-10-03T16:57:04.501008+00:00",
   "sources": {
     "OpenAI": "https://developers.openai.com/api/docs/pricing",
     "Anthropic": "https://platform.claude.com/docs/en/about-claude/pricing"
   },
-  "changes": [
-    {
-      "model": "GPT-6 Astra",
-      "from": [
-        5,
-        25
-      ],
-      "to": [
-        10.0,
-        50.0
-      ]
-    },
-    {
-      "model": "GPT-6.1 Sol",
-      "from": [
-        1,
-        5
-      ],
-      "to": [
-        2.0,
-        10.0
-      ]
-    },
-    {
-      "model": "GPT-6 Luna",
-      "from": [
-        0.05,
-        0.25
-      ],
-      "to": [
-        0.1,
-        0.5
-      ]
-    }
-  ],
+  "changes": [],
   "errors": []
 }
