@@ -1,21 +1,9 @@
 {
-  "checked_at": "2026-11-10T20:41:58.395668+00:00",
+  "checked_at": "2026-11-11T21:01:52.053013+00:00",
   "sources": {
     "OpenAI": "https://developers.openai.com/api/docs/pricing",
     "Anthropic": "https://platform.claude.com/docs/en/about-claude/pricing"
   },
-  "changes": [
-    {
-      "model": "GPT-5.6 Sol",
-      "from": [
-        4.0,
-        5.0
-      ],
-      "to": [
-        4.0,
-        20.0
-      ]
-    }
-  ],
+  "changes": [],
   "errors": []
 }
