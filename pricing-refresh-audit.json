@@ -1,21 +1,9 @@
 {
-  "checked_at": "2026-11-17T21:59:40.162488+00:00",
+  "checked_at": "2026-11-18T21:41:24.091348+00:00",
   "sources": {
     "OpenAI": "https://developers.openai.com/api/docs/pricing",
     "Anthropic": "https://platform.claude.com/docs/en/about-claude/pricing"
   },
-  "changes": [
-    {
-      "model": "GPT-6 Luna",
-      "from": [
-        0.1,
-        0.125
-      ],
-      "to": [
-        0.05,
-        0.0625
-      ]
-    }
-  ],
+  "changes": [],
   "errors": []
 }
